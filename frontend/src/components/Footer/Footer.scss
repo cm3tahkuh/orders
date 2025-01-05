@@ -1,0 +1,14 @@
+@use "../../styles/variables.scss";
+
+footer {
+    font-weight: 500;
+    font-style: normal;
+    font-family: variables.$font-family;
+    color: white;
+    font-size: 14px;
+    letter-spacing: 0em;
+    line-height: 1.5;
+    text-align: center;
+    padding: 50px 0px;
+    background-color: #222222;
+}
