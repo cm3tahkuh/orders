@@ -4,7 +4,7 @@
   background-color: #f7f7f7;
   padding: 100px 0px;
 
-  &__container{
+  &__container {
     max-width: 950px;
     margin-left: auto;
     margin-right: auto;
@@ -21,7 +21,7 @@
   &__row {
     display: flex;
     justify-content: space-between;
-    
+
     gap: 50px;
     align-items: center;
 
@@ -65,5 +65,34 @@
       line-height: 1.5;
       text-align: left;
     }
+  }
+}
+
+@media (max-width: 960px) {
+  .cards__row {
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+    align-items: center;
+
+    &:nth-child(2n) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .cards__text {
+      &__title {
+        text-align: center;
+      }
+
+      &__paragraph {
+        text-align: center;
+      }
+    }
+  }
+
+  .hero__title {
+    font-size: 54px;
   }
 }
