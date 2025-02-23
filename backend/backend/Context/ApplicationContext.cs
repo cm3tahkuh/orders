@@ -7,11 +7,12 @@ namespace backend.Context
     {
 
         public DbSet<Form> Forms { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
-            Database.EnsureCreated();
+
         }
 
     }
