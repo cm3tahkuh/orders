@@ -1,9 +1,15 @@
 using backend.Context;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/account/login";
+        options.AccessDeniedPath = "/account/access-denied";
+    });
 
 
 builder.Services.AddControllers();
@@ -16,7 +22,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin", policy =>
     {
-        policy.WithOrigins("http://example.com", "http://localhost:5173") 
+        policy.WithOrigins("*", "http://localhost:5173") 
               .AllowAnyMethod() 
               .AllowAnyHeader(); 
     });

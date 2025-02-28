@@ -13,11 +13,15 @@ const Form = () => {
 
   const sendForm = async (data) => {
     try {
-      const response = await axios.post("http://localhost:5295/Form", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:5295/api/Form",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       setSendResponse({ success: true, message: `${response.data}` });
 
@@ -81,21 +85,27 @@ const Form = () => {
             Отправить
           </button>
         </form>
-
       </div>
       {sendResponse.message && (
-          <div style={{display: 'flex',alignItems:'center',justifyContent: 'center',width:'100%'}}>
-            <motion.div
-              initial={{ opacity: 0, transition: { duration: 0.4 } }}
-              whileInView={{ opacity: 1 }}
-              className={`form__status ${
-                sendResponse.success ? "success" : "error"
-              }`}
-            >
-              {sendResponse.message}
-            </motion.div>
-          </div>
-        )}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100%",
+          }}
+        >
+          <motion.div
+            initial={{ opacity: 0, transition: { duration: 0.4 } }}
+            whileInView={{ opacity: 1 }}
+            className={`form__status ${
+              sendResponse.success ? "success" : "error"
+            }`}
+          >
+            {sendResponse.message}
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 };

@@ -13,6 +13,10 @@ namespace backend.Models
         public DateTimeOffset CreatedAt { get; set; }
         public DateTimeOffset? CompletedAt { get; set; }
 
+        public Guid? AdminId { get; set; }
+        public Admin? Admin { get; set; }
 
+        public Guid? EmployeeId { get; set; }
+        public Employee? Employee { get; set; }
     }
 }

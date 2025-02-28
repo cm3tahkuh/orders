@@ -8,7 +8,8 @@ using Microsoft.EntityFrameworkCore;
 namespace backend.Controllers
 {
 
-    [Route("[controller]")]
+    [Route("api/[controller]")]
+    [ApiController]
     public class FormController : ControllerBase
     {
         private ApplicationContext _context;
@@ -16,14 +17,6 @@ namespace backend.Controllers
         public FormController(ApplicationContext context)
         {
             _context = context;
-        }
-
-        [HttpGet]
-
-        public async Task<List<Form>> GetFormsAsync()
-        {
-            var result = await _context.Forms.ToListAsync();
-            return result;
         }
 
         [HttpPost]
@@ -38,7 +31,7 @@ namespace backend.Controllers
                 Phone = form.Phone,
                 Description = form.Description,
                 Status = OrderStatus.Новая,
-                CreatedAt = DateTime.Now
+                CreatedAt = DateTimeOffset.Now,
             };
 
             await _context.Orders.AddAsync(order);
@@ -49,14 +42,5 @@ namespace backend.Controllers
         }
 
 
-        [HttpDelete]
-
-        public async Task<IActionResult> DeleteAllAsync()
-        {
-            var result = await _context.Forms.ToListAsync();
-            _context.Forms.RemoveRange(result); 
-            await _context.SaveChangesAsync();
-            return Ok("Поздравляю. Вы всё удалили...");
-        }
     }
 }

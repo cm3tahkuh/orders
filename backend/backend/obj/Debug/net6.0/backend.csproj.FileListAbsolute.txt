@@ -163,3 +163,4 @@ C:\Users\user\Music\Programs\orders\backend\backend\obj\Debug\net6.0\refint\back
 C:\Users\user\Music\Programs\orders\backend\backend\obj\Debug\net6.0\backend.pdb
 C:\Users\user\Music\Programs\orders\backend\backend\obj\Debug\net6.0\backend.genruntimeconfig.cache
 C:\Users\user\Music\Programs\orders\backend\backend\obj\Debug\net6.0\ref\backend.dll
+C:\Users\user\Music\Programs\orders\backend\backend\bin\Debug\net6.0\System.Security.Permissions.dll
