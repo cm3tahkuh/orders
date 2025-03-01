@@ -1,15 +1,12 @@
 using backend.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.LoginPath = "/account/login";
-        options.AccessDeniedPath = "/account/access-denied";
-    });
+
+
 
 
 builder.Services.AddControllers();
@@ -17,7 +14,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContextFactory<ApplicationContext>(opt => opt.UseSqlite("Data Source=database.db"));
+builder.Services.AddDbContext<ApplicationContext>(opt => opt.UseSqlite("Data Source=database.db"));
+builder.Services.AddSingleton<AuthService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin", policy =>
@@ -29,6 +27,7 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
 
 app.UseCors("AllowSpecificOrigin");
 

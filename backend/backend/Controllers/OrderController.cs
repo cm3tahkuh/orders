@@ -29,6 +29,7 @@ namespace backend.Controllers
         public async Task<ActionResult<Order>> GetOrderByIdAsync(Guid id)
         {
             var result = await _context.Orders.FirstOrDefaultAsync(item => item.Id == id);
+
             
                 return Ok(result);
         }
