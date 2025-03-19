@@ -1,5 +1,6 @@
 ﻿using backend.Context;
 using backend.Models;
+using backend.Models.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,6 +33,40 @@ namespace backend.Controllers
 
             
                 return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+
+        public async Task<ActionResult<Order>> DeleteOrderByIdAsync(Guid id)
+        {
+            var deleteItem = await _context.Orders.FirstOrDefaultAsync(item => item.Id == id);
+
+            _context.Orders.Remove(deleteItem);
+            await _context.SaveChangesAsync();
+
+
+            return Ok(deleteItem);
+        }
+
+        [HttpPut("{id}")]
+
+        public async Task<ActionResult<Order>> UpdateOrderStatusByIdAsync(Guid id, OrderStatus status){
+
+            var order = await _context.Orders.FirstOrDefaultAsync(item => item.Id == id);
+ 
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            order.Status = status;
+
+            await _context.SaveChangesAsync();
+
+      
+            return Ok(order);
+
+
         }
 
     }
