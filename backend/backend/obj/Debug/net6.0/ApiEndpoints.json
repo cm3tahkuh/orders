@@ -1,16 +1,58 @@
 [
   {
-    "ContainingType": "backend.Controllers.AdminController",
-    "Method": "RegisterEmployee",
-    "RelativePath": "admin/register-employee",
+    "ContainingType": "backend.Controllers.AuthController",
+    "Method": "LoginUserAsync",
+    "RelativePath": "api/Auth/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "model",
-        "Type": "backend.Controllers.AdminController\u002BRegisterEmployeeModel",
+        "Name": "userLoginDto",
+        "Type": "backend.Models.Dtos.User.UserLoginDto",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend.Controllers.AuthController",
+    "Method": "LogoutUserAsync",
+    "RelativePath": "api/Auth/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend.Controllers.AuthController",
+    "Method": "RegisterUserAsync",
+    "RelativePath": "api/Auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Phone",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -78,45 +120,70 @@
     ]
   },
   {
-    "ContainingType": "backend.Controllers.LoginController",
-    "Method": "Login",
-    "RelativePath": "login/login",
-    "HttpMethod": "POST",
+    "ContainingType": "backend.Controllers.OrderController",
+    "Method": "DeleteOrderByIdAsync",
+    "RelativePath": "api/Order/{id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "model",
-        "Type": "backend.Controllers.LoginController\u002BLoginModel",
+        "Name": "id",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "backend.Models.Order",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
-    "ContainingType": "backend.Controllers.LoginController",
-    "Method": "Logout",
-    "RelativePath": "login/logout",
-    "HttpMethod": "POST",
+    "ContainingType": "backend.Controllers.OrderController",
+    "Method": "UpdateOrderStatusByIdAsync",
+    "RelativePath": "api/Order/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "status",
+        "Type": "backend.Models.Enums.OrderStatus",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend.Models.Order",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend.Controllers.UserController",
+    "Method": "GetAllUsersAsync",
+    "RelativePath": "api/User",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "backend.Controllers.LoginController",
-    "Method": "RegisterAdminAsync",
-    "RelativePath": "login/register",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "admin",
-        "Type": "backend.Controllers.LoginController\u002BRegisterModel",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": []
   }
 ]

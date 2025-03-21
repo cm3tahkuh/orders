@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { fetchOrders, updateOrderStatus, deleteOrder } from "../../entities/order/order";
+import { getOrders, updateOrderStatus, deleteOrder } from "../../entities/order/order";
 
 export const useOrders = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const loadData = async () => {
-      const orders = await fetchOrders();
+      const orders = await getOrders();
       setData(orders);
     };
     loadData();
@@ -21,6 +21,8 @@ export const useOrders = () => {
     );
     return updatedOrder;
   };
+
+
 
   const handleDeleteOrder = async (orderId) => {
     const result = window.confirm("Вы уверены, что хотите удалить заявку?");

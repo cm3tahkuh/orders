@@ -5,8 +5,7 @@ export const orderStatusMap = {
   3: "Отменена",
 };
 
-
-export const fetchOrders = async () => {
+export const getOrders = async () => {
   const response = await fetch("http://localhost:5295/api/Order");
   const responseData = await response.json();
   return responseData;
@@ -22,9 +21,9 @@ export const updateOrderStatus = async (orderId, newStatus) => {
 };
 
 export const deleteOrder = async (deleteId) => {
-  const response = await fetch(
-    `http://localhost:5295/api/Order/${deleteId}`,
-    { method: "DELETE", headers: { "Content-type": "application/json" } }
-  );
+  const response = await fetch(`http://localhost:5295/api/Order/${deleteId}`, {
+    method: "DELETE",
+    headers: { "Content-type": "application/json" },
+  });
   return response.json();
 };

@@ -1,14 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\user\\Music\\Programs\\orders\\backend\\",
+  "WorkspaceRootPath": "C:\\Programs\\orders\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\users\\user\\music\\programs\\orders\\backend\\backend\\controllers\\formcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|solutionrelative:backend\\controllers\\formcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\programs\\orders\\backend\\backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|solutionrelative:backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\users\\user\\music\\programs\\orders\\backend\\backend\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\programs\\orders\\backend\\backend\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|solutionrelative:backend\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\programs\\orders\\backend\\backend\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|solutionrelative:backend\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\programs\\orders\\backend\\backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|solutionrelative:backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\programs\\orders\\backend\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|solutionrelative:backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,32 +35,67 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Music\\Programs\\orders\\backend\\backend\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "backend\\Controllers\\OrderController.cs",
-              "ToolTip": "C:\\Users\\user\\Music\\Programs\\orders\\backend\\backend\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "backend\\Controllers\\OrderController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Programs\\orders\\backend\\backend\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "backend\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Programs\\orders\\backend\\backend\\Services\\AuthService.cs",
+              "RelativeToolTip": "backend\\Services\\AuthService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T16:21:16.195Z",
+              "WhenOpened": "2025-03-21T13:59:38.272Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FormController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Music\\Programs\\orders\\backend\\backend\\Controllers\\FormController.cs",
-              "RelativeDocumentMoniker": "backend\\Controllers\\FormController.cs",
-              "ToolTip": "C:\\Users\\user\\Music\\Programs\\orders\\backend\\backend\\Controllers\\FormController.cs",
-              "RelativeToolTip": "backend\\Controllers\\FormController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA5AAAAAAAAAA==",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Programs\\orders\\backend\\backend\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Programs\\orders\\backend\\backend\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "backend\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowDcAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T16:19:54.783Z",
+              "WhenOpened": "2025-03-21T12:36:43.966Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Programs\\orders\\backend\\backend\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Programs\\orders\\backend\\backend\\Controllers\\UserController.cs",
+              "RelativeToolTip": "backend\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T12:36:42.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Programs\\orders\\backend\\backend\\Program.cs",
+              "RelativeDocumentMoniker": "backend\\Program.cs",
+              "ToolTip": "C:\\Programs\\orders\\backend\\backend\\Program.cs",
+              "RelativeToolTip": "backend\\Program.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T10:17:32.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Programs\\orders\\backend\\backend\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Programs\\orders\\backend\\backend\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "backend\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAtwDQAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T16:21:16.195Z",
+              "EditorCaption": ""
             }
           ]
         }

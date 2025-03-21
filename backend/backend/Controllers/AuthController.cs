@@ -38,12 +38,12 @@ namespace backend.Controllers
 
         [HttpPost("login")]
 
-        public async Task<IActionResult> LoginUserAsync(UserLoginDto userLoginDto)
+        public async Task<IActionResult> LoginUserAsync([FromBody]UserLoginDto userLoginDto)
         {
 
             if (_service.Check(userLoginDto))
             {
-                return Ok($"Вы уже вошли в систему под именем - {userLoginDto.UserName}");
+                return Ok(new { message = $"Вы уже вошли в систему под именем - {userLoginDto.UserName}" });
             } 
 
             var result = await _context.Users.FirstOrDefaultAsync(user => user.UserName == userLoginDto.UserName && user.Password == userLoginDto.Password);
@@ -51,11 +51,12 @@ namespace backend.Controllers
             if (result != null)
             {
                 _service.Add(userLoginDto);
-                return Ok($"{userLoginDto.UserName} Пользователь успешно авторизирован");
+                //return Ok(new {message = $"{userLoginDto.UserName} Пользователь успешно авторизирован" });
+                return Ok(new {identificator = result.Id, username = userLoginDto.UserName, role = result.Role });
             }
             else
             {
-                return BadRequest("Пользователя не существует");
+                return BadRequest(new { message = "Пользователя не существует" });
             }
 
         }
@@ -64,9 +65,10 @@ namespace backend.Controllers
 
         public async Task<IActionResult> LogoutUserAsync(string name)
         {
+            
             _service.Remove(name);
 
-            return Ok("Вы успешно вышли из системы");
+            return Ok(new { message = "Вы успешно вышли из системы" });
         }
     }
 }
