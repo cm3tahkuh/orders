@@ -15,6 +15,9 @@ export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { login, loading, error, user } = useAuth();
+
+  
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -25,7 +28,6 @@ export const Login = () => {
 
   useEffect(() => {
     if (user) {
-      console.table(user);
       localStorage.setItem("userData", JSON.stringify({
         "id": user.identificator,
         "username": user.username,

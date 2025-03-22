@@ -1,5 +1,5 @@
-import { OrderTable } from "../../../widgets/OrderTable/OrderTable";
-import { useOrders } from "../../../features/orders/useOrder";
+import { OrderTable } from "../../widgets/OrderTable/OrderTable";
+import { useOrders } from "../../features/orders/useOrder";
 
 const OrderTablePage = () => {
   const { data, handleDeleteOrder, handleStatusChange } = useOrders();

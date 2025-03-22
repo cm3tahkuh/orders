@@ -8,8 +8,6 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  console.log(user);
-
   const login = async (username, password) => {
     const data = await loginUser(username, password);
 
@@ -24,8 +22,12 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      const username = localStorage.getItem("userData");
-      console.log(username);
+      const generalUserData = localStorage.getItem("userData");
+
+      const userData = JSON.parse(generalUserData);
+
+      const username = userData.username;
+
       if (username) {
         const data = await logoutUser(username);
         localStorage.removeItem("userData");
@@ -38,10 +40,11 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const storedData = localStorage.getItem("userData");
-    console.log(storedData);
+
+    const jsonData = JSON.parse(storedData)
 
     if (storedData) {
-      setUser({ username: storedData.username });
+      setUser({ id: jsonData.id, username: jsonData.username, role: jsonData.role });
     }
   }, []);
 

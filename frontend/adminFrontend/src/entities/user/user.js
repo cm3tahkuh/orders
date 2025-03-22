@@ -41,3 +41,37 @@ export const logoutUser = async (username) => {
     throw new Error(error);
   }
 };
+
+export const registerUser = async (
+  firstname,
+  lastname,
+  phone,
+  username,
+  password,
+  role
+) => {
+  try {
+    const response = await fetch(`http://localhost:5295/api/Employee`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstName: firstname,
+        lastName: lastname,
+        phone: phone,
+        user: {
+          userName: username,
+          password: password,
+          role: role,
+        },
+      }),
+    });
+
+    // ?FirstName=${firstname}LastName=${lastname}Phone=${phone}&User.UserName=${username}&User.Password=${password}&User.Role=${role}
+
+    const responseData = await response.json();
+
+    return responseData;
+  } catch (error) {
+    throw new Error(error);
+  }
+};

@@ -17,7 +17,7 @@ namespace backend.Controllers
 
         public UserController(ApplicationContext context)
         {
-            _context=context;   
+            _context = context;   
         }
 
         [HttpGet]
