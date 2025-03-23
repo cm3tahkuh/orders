@@ -31,3 +31,65 @@ dist-ssr
 bin/
 obj/
 
+
+# .NET build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ist/
+[Dd]ebug/
+[Dd]ebugPublish/
+[Dd]ist/
+[Dd]ebug/
+[Dd]ebugPublish/
+[Dd]ist/
+bin/
+obj/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files for Visual Studio for Mac
+.vscode/
+
+# ASP.NET
+# Web API and MVC
+App_Data/
+App_Start/
+Global.asax
+web.config
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer log files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer log files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# .NET Core
+.vscode/
+
+# JetBrains Rider
+.idea/
+
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+
