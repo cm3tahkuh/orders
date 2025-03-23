@@ -22,3 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+
+.vs/
+*.suo
+*.user
+bin/
+obj/
+
