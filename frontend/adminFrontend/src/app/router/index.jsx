@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "../../shared/ui/main-layout";
-import OrderTablePage from "../../pages/order-table-page/OrderTablePage";
+import OrderTablePage from "../../pages/OrderTablePage/OrderTablePage";
 import { Login } from "../../pages/Login/Login";
-import RegisterEmployee from "../../pages/RegisterEmployee/RegisterEmployee";
+import RegisterEmployeePage from "../../pages/RegisterEmployeePage/RegisterEmployeePage";
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "registeremployee",
-        element: <RegisterEmployee />,
+        element: <RegisterEmployeePage />,
       },
     ],
   },

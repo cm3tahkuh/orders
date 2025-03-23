@@ -1,3 +1,9 @@
+export const userRoleMap = {
+  0: "Главный администратор",
+  1: "Администратор",
+  2: "Сотрудник",
+};
+
 export const loginUser = async (username, password) => {
   try {
     const response = await fetch("http://localhost:5295/api/Auth/login", {
@@ -67,6 +73,65 @@ export const registerUser = async (
     });
 
     // ?FirstName=${firstname}LastName=${lastname}Phone=${phone}&User.UserName=${username}&User.Password=${password}&User.Role=${role}
+
+    const responseData = await response.json();
+
+    return responseData;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const getAllUsers = async () => {
+  try {
+    const response = await fetch("http://localhost:5295/api/Employee");
+
+    const responseData = await response.json();
+
+    return responseData;
+  } catch {
+    throw new Error(error);
+  }
+};
+
+export const deleteUserById = async (id) => {
+  try {
+    const response = await fetch("http://localhost:5295/api/Employee", {
+      method: "DELETE",
+      headers: { "Content-type": "application/json" },
+      body: `"${id}"`,
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const updateUserById = async (user) => {
+  const {
+    id,
+    firstName,
+    lastName,
+    phone,
+    user: { userName, password, role },
+  } = user;
+
+  console.log(user)
+
+  try {
+    const response = await fetch(`http://localhost:5295/api/Employee/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstName: firstName,
+        lastName: lastName,
+        phone: phone,
+        user: {
+          userName: userName,
+          password: password,
+          role: role,
+        },
+      }),
+    });
 
     const responseData = await response.json();
 

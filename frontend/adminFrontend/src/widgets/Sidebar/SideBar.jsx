@@ -17,10 +17,10 @@ const SideBar = () => {
 
   return (
     <Box>
-      <Button onClick={() => toggleDrawer(true)}>
-        <ListIcon />
+      <Button sx={{position: "fixed", zIndex:"10000", left: 0, bottom: 0}} onClick={() => toggleDrawer((prev) => !prev)}>
+        <ListIcon fontSize="large" color="secondary"/>
       </Button>
-      <Drawer open={open} onClose={() => toggleDrawer(false)}>
+      <Drawer open={open} onClose={() => toggleDrawer((prev) => !prev)}>
         <List
           sx={{
             width: "300px",
@@ -46,7 +46,7 @@ const SideBar = () => {
         <List>
           <ListItemButton>
             <Link
-              to="/login"
+              to="/orders"
               style={{ color: "black", textDecoration: "none" }}
             >
               <Typography variant="h2">Таблица заявок</Typography>
