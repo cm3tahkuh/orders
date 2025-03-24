@@ -9,12 +9,10 @@ import {
   MenuItem,
 } from "@mui/material";
 import { useState, useEffect } from "react";
-import {IMaskInput} from 'react-imask';
 import React from "react";
 import { userRoleMap } from "../../entities/user/user";
 
-
-const UserModal = ({ open, onClose, user, onEdit }) => {
+const UserModal = ({ open, onClose, user, mode, onEdit, onAdd }) => {
   const style = {
     position: "absolute",
     top: "50%",
@@ -32,8 +30,21 @@ const UserModal = ({ open, onClose, user, onEdit }) => {
   // console.log(currentUser);
 
   useEffect(() => {
-    setCurrentUser(user);
-  }, [user]);
+    if (mode === "edit" && user) {
+      setCurrentUser(user);
+    } else if (mode === "add") {
+      setCurrentUser({
+        firstName: "",
+        lastName: "",
+        phone: "",
+        user: {
+          userName: "",
+          password: "",
+          role: 2,
+        },
+      });
+    }
+  }, [user, mode]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,23 +69,6 @@ const UserModal = ({ open, onClose, user, onEdit }) => {
     });
   };
 
-
-
-    const PhoneMask = React.forwardRef(function PhoneMask(props, ref) {
-      return (
-        <IMaskInput
-        {...props}
-        mask="(#00) 000-0000"
-        definitions={{
-          '#': /[1-9]/,
-        }}
-        inputRef={ref}
-        overwrite
-      />
-      );
-    });
-    
-
   return (
     <Paper>
       <Modal open={open} onClose={onClose}>
@@ -86,7 +80,9 @@ const UserModal = ({ open, onClose, user, onEdit }) => {
             fontSize={24}
             fontWeight={600}
           >
-            Изменить данные пользователя
+            {mode === "edit"
+              ? "Изменить данные пользователя"
+              : "Добавить нового пользователя"}
           </Typography>
           {currentUser && (
             <>
@@ -113,9 +109,6 @@ const UserModal = ({ open, onClose, user, onEdit }) => {
                 onChange={handleChange}
                 fullWidth
                 margin="normal"
-                InputProps={{
-                  inputComponent: PhoneMask, 
-                }}
               />
               <TextField
                 label="Логин"
@@ -155,12 +148,12 @@ const UserModal = ({ open, onClose, user, onEdit }) => {
               variant="outlined"
               color="success"
               onClick={() => {
-                onEdit(currentUser);
+                mode === "edit" ? onEdit(currentUser) : onAdd(currentUser);
                 alert("Данные пользователя успешно изменены!");
                 onClose();
               }}
             >
-              Сохранить
+              {mode === "edit" ? "Сохранить" : "Добавить"}
             </Button>
           </Box>
         </Box>

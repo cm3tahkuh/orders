@@ -3,6 +3,7 @@ import {
   getAllUsers,
   deleteUserById,
   updateUserById,
+  registerUser,
 } from "../../entities/user/user";
 
 export const useUsers = () => {
@@ -16,6 +17,33 @@ export const useUsers = () => {
 
     fetchUsers();
   }, []);
+
+  const handleAddUser = async (user) => {
+    const {
+      id,
+      firstName,
+      lastName,
+      phone,
+      user: { userName, password, role },
+    } = user;
+
+    const result = await registerUser(user);
+
+    setData((prevData) => [
+      ...prevData,
+      {
+        id,
+        firstName,
+        lastName,
+        phone,
+        user: {
+          userName: userName,
+          password: password,
+          role: role,
+        },
+      },
+    ]);
+  };
 
   const handleDeleteUser = async (id) => {
     const result = window.confirm(
@@ -58,5 +86,5 @@ export const useUsers = () => {
     );
   };
 
-  return { data, handleDeleteUser, handleEditUser };
+  return { data, handleDeleteUser, handleEditUser, handleAddUser };
 };

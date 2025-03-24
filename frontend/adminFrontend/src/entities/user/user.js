@@ -48,31 +48,30 @@ export const logoutUser = async (username) => {
   }
 };
 
-export const registerUser = async (
-  firstname,
-  lastname,
-  phone,
-  username,
-  password,
-  role
-) => {
+export const registerUser = async (user) => {
+  const {
+    id,
+    firstName,
+    lastName,
+    phone,
+    user: { userName, password, role },
+  } = user;
+
   try {
     const response = await fetch(`http://localhost:5295/api/Employee`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        firstName: firstname,
-        lastName: lastname,
+        firstName: firstName,
+        lastName: lastName,
         phone: phone,
         user: {
-          userName: username,
+          userName: userName,
           password: password,
           role: role,
         },
       }),
     });
-
-    // ?FirstName=${firstname}LastName=${lastname}Phone=${phone}&User.UserName=${username}&User.Password=${password}&User.Role=${role}
 
     const responseData = await response.json();
 
@@ -114,8 +113,6 @@ export const updateUserById = async (user) => {
     phone,
     user: { userName, password, role },
   } = user;
-
-  console.log(user)
 
   try {
     const response = await fetch(`http://localhost:5295/api/Employee/${id}`, {

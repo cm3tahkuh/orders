@@ -6,7 +6,7 @@ import {
   List,
   Divider,
   ListItemButton,
-  ListSubheader
+  ListSubheader,
 } from "@mui/material";
 import { useState } from "react";
 import ListIcon from "@mui/icons-material/List";
@@ -17,8 +17,17 @@ const SideBar = () => {
 
   return (
     <Box>
-      <Button sx={{position: "fixed", zIndex:"10000", left: 0, bottom: 0}} onClick={() => toggleDrawer((prev) => !prev)}>
-        <ListIcon fontSize="large" color="secondary"/>
+      <Button
+        sx={{
+          position: "fixed",
+          zIndex: "10000",
+          left: 0,
+          bottom: 0,
+          padding: 4,
+        }}
+        onClick={() => toggleDrawer((prev) => !prev)}
+      >
+        <ListIcon sx={{ fontSize: "60px" }} color="secondary" />
       </Button>
       <Drawer open={open} onClose={() => toggleDrawer((prev) => !prev)}>
         <List
@@ -28,21 +37,19 @@ const SideBar = () => {
           }}
           subheader={
             <ListSubheader component="div" id="nested-list-subheader">
-             <Typography
-            textAlign={"center"}
-            fontWeight={600}
-            letterSpacing={-1}
-            fontSize={32}
-            padding={2}
-          >
-            Админ-панель
-          </Typography>
+              <Typography
+                textAlign={"center"}
+                fontWeight={600}
+                letterSpacing={-1}
+                fontSize={32}
+                padding={2}
+              >
+                Админ-панель
+              </Typography>
             </ListSubheader>
           }
-        >
+        ></List>
 
-        </List>
-          
         <List>
           <ListItemButton>
             <Link
@@ -59,6 +66,15 @@ const SideBar = () => {
               style={{ color: "black", textDecoration: "none" }}
             >
               <Typography variant="h2">Регистрация пользователей</Typography>
+            </Link>
+          </ListItemButton>
+          <Divider />
+          <ListItemButton>
+            <Link
+              to="/managementorders"
+              style={{ color: "black", textDecoration: "none" }}
+            >
+              <Typography variant="h2">Система управления заказами</Typography>
             </Link>
           </ListItemButton>
           <Divider />

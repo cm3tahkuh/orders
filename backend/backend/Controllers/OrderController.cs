@@ -22,7 +22,7 @@ namespace backend.Controllers
 
         public async Task<List<Order>> GetOrdersAsync()
         {
-            return await _context.Orders.ToListAsync();
+            return await _context.Orders.Include(x => x.Employee).ToListAsync();
         }
 
         [HttpGet("{id}")]

@@ -8,26 +8,27 @@ const OrderTablePage = () => {
   return (
     <section>
       <Paper elevation={3} sx={{ padding: 3, marginTop: 5, marginBottom: 5 }}>
-      <Box
-        display={"flex"}
-        justifyContent={"space-between"}
-        alignItems={"center"}
-      >
-        <Typography
-          variant="h1"
-          fontWeight={500}
-          letterSpacing={-1}
-          fontSize={24}
+        <Box
+          display={"flex"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
         >
-          Таблица заявок
-        </Typography>
-      </Box></Paper>
-      <Paper  elevation={3} sx={{ padding: 3, marginTop: 5, marginBottom: 5 }}>
-      <OrderTable
-        data={data}
-        onStatusChange={handleStatusChange}
-        onDelete={handleDeleteOrder}
-      />
+          <Typography
+            variant="h1"
+            fontWeight={500}
+            letterSpacing={-1}
+            fontSize={24}
+          >
+            Таблица заявок
+          </Typography>
+        </Box>
+      </Paper>
+      <Paper elevation={3} sx={{ padding: 3, marginTop: 5, marginBottom: 5 }}>
+        <OrderTable
+          data={data}
+          onStatusChange={handleStatusChange}
+          onDelete={handleDeleteOrder}
+        />
       </Paper>
     </section>
   );

@@ -24,21 +24,19 @@ import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
 import UserModal from "../UserModal/UserModal";
 
-
 const UserTable = ({ data, onDelete, onEdit }) => {
-
   const [openModal, setOpenModal] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
-  const handleOpenModal=(user)=>{
-    setOpenModal(true)
-    setCurrentUser(user)
-  }
+  const handleOpenModal = (user) => {
+    setOpenModal(true);
+    setCurrentUser(user);
+  };
 
-  const handleCloseModal=()=>{
-    setOpenModal(false)
-    setCurrentUser(null)
-  }
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setCurrentUser(null);
+  };
 
   return (
     <TableContainer component={Paper}>
@@ -87,8 +85,8 @@ const UserTable = ({ data, onDelete, onEdit }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((user) => (
-              <TableRow key={user.id} display={"flex"}>
+            {data.map((user, index) => (
+              <TableRow key={user.id || index} display={"flex"}>
                 <TableCell>
                   <Box display={"flex"} gap={1} alignContent={"center"}>
                     {user.firstName}
@@ -157,7 +155,13 @@ const UserTable = ({ data, onDelete, onEdit }) => {
         </Typography>
       )}
 
-      <UserModal open={openModal} onClose={handleCloseModal} onEdit={onEdit} user={currentUser}/>
+      <UserModal
+        open={openModal}
+        onClose={handleCloseModal}
+        onEdit={onEdit}
+        user={currentUser}
+        mode={"edit"}
+      />
     </TableContainer>
   );
 };

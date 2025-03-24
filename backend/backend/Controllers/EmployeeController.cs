@@ -19,11 +19,11 @@ namespace backend.Controllers
         [HttpPost]
 
         public async Task<IActionResult> RegisterEmployeeAsync([FromBody] Employee employee)
-        {
+         {
 
             await _context.Employees.AddAsync(employee);
             await _context.SaveChangesAsync();
-            return Ok("Сотрудник успешно зарегестрирован!");
+            return Ok(new {message = $"Сотрудник ${employee.User.UserName} успешно зарегестрирован!" });
 
         }
 
@@ -72,6 +72,56 @@ namespace backend.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = $"Пользователь {result.User.UserName} удален из системы" });
+        }
+
+
+        [HttpPost("{orderId}/assign")]
+        public async Task<IActionResult> AssignEmployeesToOrder(Guid orderId, [FromBody] List<Guid> employeeIds)
+        {
+            var order = await _context.Orders.Include(o => o.Employee).FirstOrDefaultAsync(o => o.Id == orderId);
+
+            if (order == null)
+            {
+                return NotFound("Order not found");
+            }
+
+            var employees = await _context.Employees.Where(e => employeeIds.Contains(e.Id)).ToListAsync();
+
+            if (employees.Count != employeeIds.Count)
+            {
+                return NotFound("Some employees not found");
+            }
+
+            
+            foreach (var employee in employees)
+            {
+                order.EmployeeId = employee.Id; 
+                employee.Orders.Add(order); 
+            }
+
+            await _context.SaveChangesAsync();
+
+            return Ok("Employees assigned to order successfully");
+        }
+
+
+        [HttpGet("{orderId}/employees")]
+        public async Task<IActionResult> GetEmployeesForOrder(Guid orderId)
+        {
+            var order = await _context.Orders
+                .Include(o => o.Employee)
+                .FirstOrDefaultAsync(o => o.Id == orderId);
+
+            if (order == null)
+            {
+                return NotFound("Order not found");
+            }
+
+            var employees = await _context.Employees
+                .Where(e => e.Orders.Any(o => o.Id == orderId))
+                .ToListAsync();
+
+            return Ok(employees);
         }
 
     }

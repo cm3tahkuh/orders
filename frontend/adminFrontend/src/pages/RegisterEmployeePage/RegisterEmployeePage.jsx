@@ -2,13 +2,23 @@ import { Typography, Box, Button, Paper } from "@mui/material";
 import { useAuth } from "../../features/auth/context/useAuth";
 import UserTable from "../../widgets/UserTable/UserTable";
 import { useUsers } from "../../features/user/useUser";
+import UserModal from "../../widgets/UserModal/UserModal";
+import { useState } from "react";
 
 const RegisterEmployeePage = () => {
   const { user } = useAuth();
 
-  const { data, handleDeleteUser, handleEditUser } = useUsers();
+  const { data, handleDeleteUser, handleEditUser, handleAddUser } = useUsers();
 
-  // console.log(data);
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
 
   return (
     <Box>
@@ -26,7 +36,7 @@ const RegisterEmployeePage = () => {
           >
             Регистрация сотрудников
           </Typography>
-          <Button variant="outlined">Добавить</Button>
+          <Button onClick={handleOpenModal} variant="outlined">Добавить</Button>
         </Box>
       </Paper>
       <Paper elevation={1} sx={{ padding: 3, marginTop: 5, marginBottom: 5 }}>
@@ -36,6 +46,7 @@ const RegisterEmployeePage = () => {
           onEdit={handleEditUser}
         />
       </Paper>
+      <UserModal open={openModal} onClose={handleCloseModal} onAdd={handleAddUser} mode={"add"}/>
     </Box>
   );
 };
