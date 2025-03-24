@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Programs\\orders\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\programs\\orders\\backend\\backend\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|solutionrelative:backend\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\programs\\orders\\backend\\backend\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|solutionrelative:backend\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\programs\\orders\\backend\\backend\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|solutionrelative:backend\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\programs\\orders\\backend\\backend\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|solutionrelative:backend\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\programs\\orders\\backend\\backend\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|solutionrelative:backend\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\programs\\orders\\backend\\backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|solutionrelative:backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\programs\\orders\\backend\\backend\\context\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|solutionrelative:backend\\context\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F5FD3BEB-C2AB-4DF1-8B92-3DCE571086C1}|backend\\backend.csproj|c:\\programs\\orders\\backend\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,58 +38,98 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EmployeeController.cs",
-              "DocumentMoniker": "C:\\Programs\\orders\\backend\\backend\\Controllers\\EmployeeController.cs",
-              "RelativeDocumentMoniker": "backend\\Controllers\\EmployeeController.cs",
-              "ToolTip": "C:\\Programs\\orders\\backend\\backend\\Controllers\\EmployeeController.cs",
-              "RelativeToolTip": "backend\\Controllers\\EmployeeController.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAD4vy0AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "ApplicationContext.cs",
+              "DocumentMoniker": "C:\\Programs\\orders\\backend\\backend\\Context\\ApplicationContext.cs",
+              "RelativeDocumentMoniker": "backend\\Context\\ApplicationContext.cs",
+              "ToolTip": "C:\\Programs\\orders\\backend\\backend\\Context\\ApplicationContext.cs",
+              "RelativeToolTip": "backend\\Context\\ApplicationContext.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T10:44:31.797Z",
+              "WhenOpened": "2025-03-24T16:13:38.679Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Programs\\orders\\backend\\backend\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "backend\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Programs\\orders\\backend\\backend\\Controllers\\UserController.cs",
               "RelativeToolTip": "backend\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-21T12:36:42.726Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "C:\\Programs\\orders\\backend\\backend\\Models\\Employee.cs",
+              "RelativeDocumentMoniker": "backend\\Models\\Employee.cs",
+              "ToolTip": "C:\\Programs\\orders\\backend\\backend\\Models\\Employee.cs",
+              "RelativeToolTip": "backend\\Models\\Employee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T14:42:32.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "C:\\Programs\\orders\\backend\\backend\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\EmployeeController.cs",
+              "ToolTip": "C:\\Programs\\orders\\backend\\backend\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "backend\\Controllers\\EmployeeController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAmwGMAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T10:44:31.797Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Programs\\orders\\backend\\backend\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "backend\\Models\\Order.cs",
+              "ToolTip": "C:\\Programs\\orders\\backend\\backend\\Models\\Order.cs",
+              "RelativeToolTip": "backend\\Models\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T14:42:31.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "OrderController.cs",
               "DocumentMoniker": "C:\\Programs\\orders\\backend\\backend\\Controllers\\OrderController.cs",
               "RelativeDocumentMoniker": "backend\\Controllers\\OrderController.cs",
               "ToolTip": "C:\\Programs\\orders\\backend\\backend\\Controllers\\OrderController.cs",
               "RelativeToolTip": "backend\\Controllers\\OrderController.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAawDQAAABSAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAQwCMAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-28T16:21:16.195Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Programs\\orders\\backend\\backend\\Program.cs",
               "RelativeDocumentMoniker": "backend\\Program.cs",
               "ToolTip": "C:\\Programs\\orders\\backend\\backend\\Program.cs",
               "RelativeToolTip": "backend\\Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T10:17:32.722Z"
+              "WhenOpened": "2025-03-21T10:17:32.722Z",
+              "EditorCaption": ""
             }
           ]
         }

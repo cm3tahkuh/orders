@@ -121,6 +121,43 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backend.Controllers.EmployeeController",
+    "Method": "AssignEmployeesToOrder",
+    "RelativePath": "api/Employee/{orderId}/assign",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "employeeIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend.Controllers.EmployeeController",
+    "Method": "GetEmployeesForOrder",
+    "RelativePath": "api/Employee/{orderId}/employees",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backend.Controllers.FormController",
     "Method": "SendFormAsync",
     "RelativePath": "api/Form",

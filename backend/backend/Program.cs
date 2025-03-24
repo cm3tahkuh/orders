@@ -1,11 +1,9 @@
 using backend.Context;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using backend.Services;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
-
-
 
 
 
@@ -16,6 +14,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationContext>(opt => opt.UseSqlite("Data Source=database.db"));
 builder.Services.AddSingleton<AuthService>();
+builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin", policy =>

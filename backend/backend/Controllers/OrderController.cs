@@ -22,10 +22,26 @@ namespace backend.Controllers
 
         public async Task<List<Order>> GetOrdersAsync()
         {
-            return await _context.Orders.Include(x => x.Employee).ToListAsync();
+            return await _context.Orders.Include(x => x.Employees).ToListAsync();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{employeeId}")]
+        public async Task<IActionResult> GetOrdersByEmployee(Guid employeeId)
+        {
+            // Получаем все заказы, где указан сотрудник с указанным employeeId
+            var orders = await _context.Orders
+                .Where(o => o.Employees.Any(e => e.Id == employeeId))
+                .ToListAsync();
+
+            if (orders == null || orders.Count == 0)
+            {
+                return NotFound("No orders found for the specified employee.");
+            }
+
+            return Ok(orders);
+        }
+
+        [HttpGet("getOneOrder/{id}")]
 
         public async Task<ActionResult<Order>> GetOrderByIdAsync(Guid id)
         {
