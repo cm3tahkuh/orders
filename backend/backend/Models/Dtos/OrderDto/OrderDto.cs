@@ -1,8 +1,8 @@
 ﻿using backend.Models.Enums;
 
-namespace backend.Models
+namespace backend.Models.Dtos.OrderDto
 {
-    public class Order
+    public class OrderDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -11,6 +11,6 @@ namespace backend.Models
         public OrderStatus Status { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
         public DateTimeOffset? CompletedAt { get; set; }
-        public ICollection<Employee>? Employees { get; set; } = new List<Employee>();
+        public List<EmployeeDto> Employees { get; set; } = new List<EmployeeDto>();
     }
 }

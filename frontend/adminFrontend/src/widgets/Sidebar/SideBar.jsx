@@ -51,23 +51,20 @@ const SideBar = () => {
         ></List>
 
         <List>
-          <ListItemButton>
-            <Link
-              to="/orders"
-              style={{ color: "black", textDecoration: "none" }}
-            >
+          <Link to="/orders" style={{ color: "black", textDecoration: "none" }}>
+            <ListItemButton>
               <Typography variant="h2">Таблица заявок</Typography>
-            </Link>
-          </ListItemButton>
+            </ListItemButton>
+          </Link>
           <Divider />
-          <ListItemButton>
-            <Link
-              to="/registeremployee"
-              style={{ color: "black", textDecoration: "none" }}
-            >
+          <Link
+            to="/registeremployee"
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            <ListItemButton>
               <Typography variant="h2">Регистрация пользователей</Typography>
-            </Link>
-          </ListItemButton>
+            </ListItemButton>
+          </Link>
           <Divider />
           <ListItemButton>
             <Link

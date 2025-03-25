@@ -19,11 +19,11 @@ namespace backend.Controllers
         [HttpPost]
 
         public async Task<IActionResult> RegisterEmployeeAsync([FromBody] Employee employee)
-         {
+        {
 
             await _context.Employees.AddAsync(employee);
             await _context.SaveChangesAsync();
-            return Ok(new {message = $"Сотрудник ${employee.User.UserName} успешно зарегестрирован!" });
+            return Ok(new { message = $"Сотрудник ${employee.User.UserName} успешно зарегестрирован!" });
 
         }
 
@@ -48,7 +48,7 @@ namespace backend.Controllers
             existingEmployee.LastName = employee.LastName;
             existingEmployee.Phone = employee.Phone;
 
-       
+
             if (existingEmployee.User != null)
             {
                 existingEmployee.User.UserName = employee.User.UserName;
@@ -59,7 +59,7 @@ namespace backend.Controllers
             _context.Entry(existingEmployee).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            return Ok(new {message = $"Данные пользователя {existingEmployee.User.UserName} успешно обновлены!"});
+            return Ok(new { message = $"Данные пользователя {existingEmployee.User.UserName} успешно обновлены!" });
         }
 
         [HttpDelete]
@@ -74,63 +74,6 @@ namespace backend.Controllers
             return Ok(new { message = $"Пользователь {result.User.UserName} удален из системы" });
         }
 
-
-        [HttpPost("{orderId}/assign")]
-        public async Task<IActionResult> AssignEmployeesToOrder(Guid orderId, [FromBody] List<Guid> employeeIds)
-        {
-            var order = await _context.Orders
-                .Include(o => o.Employees)  // Загружаем связанных сотрудников
-                .FirstOrDefaultAsync(o => o.Id == orderId);
-
-            if (order == null)
-            {
-                return NotFound("Заявка не найдена.");
-            }
-
-            var employees = await _context.Employees
-                .Where(employee => employeeIds.Contains(employee.Id)) // Загружаем сотрудников по их Id
-                .ToListAsync();
-
-            if (employees.Count != employeeIds.Count)
-            {
-                return NotFound("Некоторые сотрудники не найдены.");
-            }
-
-            // Добавляем каждого сотрудника в коллекцию сотрудников этой заявки
-            foreach (var employee in employees)
-            {
-                if (!order.Employees.Contains(employee))  // Проверяем, чтобы сотрудник не был уже назначен
-                {
-                    order.Employees.Add(employee);  // Назначаем сотрудника на заявку
-                    employee.Orders.Add(order);  // Добавляем заявку в коллекцию сотрудников
-                }
-            }
-
-            await _context.SaveChangesAsync(); // Сохраняем изменения в базе данных
-
-            return Ok("Сотрудники успешно назначены на заявку.");
-        }
-
-
-
-        [HttpGet("{orderId}/employees")]
-        public async Task<IActionResult> GetEmployeesForOrder(Guid orderId)
-        {
-            var order = await _context.Orders
-                .Include(o => o.Employees)
-                .FirstOrDefaultAsync(o => o.Id == orderId);
-
-            if (order == null)
-            {
-                return NotFound("Заявка не найдена");
-            }
-
-            var employees = await _context.Employees
-                .Where(employee => employee.Orders.Any(order => order.Id == orderId))
-                .ToListAsync();
-
-            return Ok(employees);
-        }
 
     }
 }
