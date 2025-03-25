@@ -3,6 +3,7 @@ import { MainLayout } from "../../shared/ui/main-layout";
 import OrderTablePage from "../../pages/OrderTablePage/OrderTablePage";
 import { Login } from "../../pages/Login/Login";
 import RegisterEmployeePage from "../../pages/RegisterEmployeePage/RegisterEmployeePage";
+import OrdersManagementTable from "../../pages/OrdersManagementTable/OrdersManagementTable";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: "registeremployee",
         element: <RegisterEmployeePage />,
+      },
+      {
+        path: "/managementorders",
+        element: <OrdersManagementTable />,
       },
     ],
   },

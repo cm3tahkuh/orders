@@ -1,7 +1,10 @@
+import { Box, Typography } from "@mui/material"
+
+
 const OrderCard = () => {
   return (
     <div>
-      <h1>OrderCard</h1>
+      <Typography>OrderCard</Typography>
     </div>
   )
 }
