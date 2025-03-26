@@ -11,6 +11,14 @@ export const getOrders = async () => {
   return responseData;
 };
 
+export const getOrderById = async (orderId) => {
+  const response = await fetch(
+    `http://localhost:5295/api/Order/getOneOrder/${orderId}`
+  );
+  const responseData = await response.json();
+  return responseData;
+};
+
 export const updateOrderStatus = async (orderId, newStatus) => {
   const response = await fetch(
     `http://localhost:5295/api/Order/${orderId}?status=${newStatus}`,

@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
-import { getOrders, updateOrderStatus, deleteOrder } from "../../entities/order/order";
+import {
+  getOrders,
+  updateOrderStatus,
+  deleteOrder,
+  getOrderById,
+} from "../../entities/order/order";
 
 export const useOrders = () => {
   const [data, setData] = useState([]);
+  const [dataEmployees, setDataEmployees] = useState([]);
+
 
   useEffect(() => {
     const loadData = async () => {
@@ -11,6 +18,11 @@ export const useOrders = () => {
     };
     loadData();
   }, []);
+
+  const handleLoadEmployeesById = async (orderId) => {
+    const order = await getOrderById(orderId);
+    setDataEmployees(order.employees);
+  };
 
   const handleStatusChange = async (orderId, newStatus) => {
     const updatedOrder = await updateOrderStatus(orderId, newStatus);
@@ -22,8 +34,6 @@ export const useOrders = () => {
     return updatedOrder;
   };
 
-
-
   const handleDeleteOrder = async (orderId) => {
     const result = window.confirm("Вы уверены, что хотите удалить заявку?");
     if (result) {
@@ -34,7 +44,9 @@ export const useOrders = () => {
 
   return {
     data,
+    dataEmployees,
     handleStatusChange,
     handleDeleteOrder,
+    handleLoadEmployeesById,
   };
 };

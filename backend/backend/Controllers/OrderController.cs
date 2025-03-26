@@ -53,7 +53,7 @@ namespace backend.Controllers
         {
 
             var orders = await _context.Orders
-                .Where(o => o.Employees.Any(e => e.Id == employeeId))
+                .Where(order => order.Employees.Any(e => e.Id == employeeId))
                 .ToListAsync();
 
 
@@ -69,7 +69,7 @@ namespace backend.Controllers
 
         public async Task<ActionResult<Order>> GetOrderByIdAsync(Guid id)
         {
-            var result = await _context.Orders.FirstOrDefaultAsync(item => item.Id == id);
+            var result = await _context.Orders.Include(order => order.Employees).FirstOrDefaultAsync(item => item.Id == id);
 
             
                 return Ok(result);

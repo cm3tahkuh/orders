@@ -20,6 +20,16 @@ const RegisterEmployeePage = () => {
     setOpenModal(false);
   };
 
+
+
+  if (!user) {
+    return <Typography variant="h6">Вы не авторизованы.</Typography>;
+  }
+
+  if (user.role === 2) {
+    return <Typography variant="h6">Доступ запрещен.</Typography>;
+  }
+
   return (
     <Box>
       <Paper elevation={1} sx={{ padding: 3, marginTop: 5, marginBottom: 5 }}>
