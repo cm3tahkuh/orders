@@ -65,6 +65,34 @@ namespace backend.Controllers
             return Ok(orders);
         }
 
+        [HttpDelete("/deleteEmployeeInOrderId")]
+        public async Task<IActionResult> deleteEmployeeInOrderId(Guid orderId, Guid employeeId)
+        {
+
+            var order = await _context.Orders
+                .Include(o => o.Employees) 
+                .FirstOrDefaultAsync(o => o.Id == orderId);
+
+
+            if (order == null)
+            {
+                return NotFound("Order not found.");
+            }
+
+            var employee = order.Employees.FirstOrDefault(e => e.Id == employeeId);
+
+            if (employee == null)
+            {
+                return NotFound("Employee not found in this order.");
+            }
+
+            order.Employees.Remove(employee);
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Employee removed from the order." });
+        }
+
         [HttpGet("getOneOrder/{id}")]
 
         public async Task<ActionResult<Order>> GetOrderByIdAsync(Guid id)

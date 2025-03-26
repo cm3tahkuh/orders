@@ -11,9 +11,18 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { orderStatusMap } from "../../entities/order/order";
+import { useState } from "react";
 
-const OrderCard = ({ data, dataEmployees, getEmployeesByOrderId }) => {
+const OrderCard = ({
+  data,
+  dataEmployees,
+  getEmployeesByOrderId,
+  DeleteEmployeeInOrder,
+}) => {
+  const [orderId, setOrderId] = useState(null);
+  console.log(orderId);
   console.log(dataEmployees);
+
   return (
     <Grid2 container spacing={2}>
       <Grid2 size={8}>
@@ -28,7 +37,13 @@ const OrderCard = ({ data, dataEmployees, getEmployeesByOrderId }) => {
           </Typography>
           <Divider />
           {data.map((order) => (
-            <Box onClick={() => getEmployeesByOrderId(order.id)} key={order.id}>
+            <Box
+              onClick={() => {
+                getEmployeesByOrderId(order.id);
+                setOrderId(order.id);
+              }}
+              key={order.id}
+            >
               <Box marginTop={1} marginBottom={1}>
                 <Box display={"flex"} justifyContent={"space-between"}>
                   <Typography fontSize={18} fontWeight={500}>
@@ -81,26 +96,27 @@ const OrderCard = ({ data, dataEmployees, getEmployeesByOrderId }) => {
             <Typography fontWeight={400}>Назначенные сотрудники</Typography>
             {dataEmployees.length > 0 ? (
               dataEmployees.map((employee) => (
-                <>
-                  <Box
-                    key={employee.id}
-                    sx={{ margin: "10px 0px" }}
-                    justifyContent={"space-between"}
-                    display={"flex"}
-                  >
-                    <Box>
-                      <Typography fontWeight={400} fontSize={14}>
-                        {employee.firstName} {employee.lastName}
-                      </Typography>
-                      <Typography fontWeight={300} fontSize={14}>
-                        {employee.phone}
-                      </Typography>
-                    </Box>
-                    <Button color="error">
-                      <DeleteOutlineIcon color="error" />
-                    </Button>
+                <Box
+                  key={employee.id}
+                  sx={{ margin: "10px 0px" }}
+                  justifyContent={"space-between"}
+                  display={"flex"}
+                >
+                  <Box>
+                    <Typography fontWeight={400} fontSize={14}>
+                      {employee.firstName} {employee.lastName}
+                    </Typography>
+                    <Typography fontWeight={300} fontSize={14}>
+                      {employee.phone}
+                    </Typography>
                   </Box>
-                </>
+                  <Button
+                    onClick={() => DeleteEmployeeInOrder(orderId, employee.id)}
+                    color="error"
+                  >
+                    <DeleteOutlineIcon color="error" />
+                  </Button>
+                </Box>
               ))
             ) : (
               <Typography>

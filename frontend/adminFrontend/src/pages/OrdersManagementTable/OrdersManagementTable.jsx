@@ -6,7 +6,7 @@ import { useOrders } from "../../features/orders/useOrder";
 const OrdersManagementTable = () => {
   const { user } = useAuth();
 
-  const { data, dataEmployees, handleLoadEmployeesById } = useOrders();
+  const { data, dataEmployees, handleLoadEmployeesById, handleDeleteEmployeeInOrder } = useOrders();
 
   if (!user) {
     return <Typography variant="h6">Вы не авторизованы.</Typography>;
@@ -18,7 +18,7 @@ const OrdersManagementTable = () => {
 
   return (
     <div>
-      <OrderCard data={data} dataEmployees={dataEmployees} getEmployeesByOrderId={handleLoadEmployeesById}/>
+      <OrderCard data={data} dataEmployees={dataEmployees} getEmployeesByOrderId={handleLoadEmployeesById} DeleteEmployeeInOrder={handleDeleteEmployeeInOrder}/>
     </div>
   );
 };

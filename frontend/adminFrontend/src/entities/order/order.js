@@ -35,3 +35,15 @@ export const deleteOrder = async (deleteId) => {
   });
   return response.json();
 };
+
+export const deleteEmployeeInOrderId = async (orderId, employeeId) => {
+  const response = await fetch(
+    `http://localhost:5295/deleteEmployeeInOrderId?orderId=${orderId}&employeeId=${employeeId}`,
+    {
+      method: "DELETE",
+      headers: { "Content-type": "application/json" },
+    }
+  );
+
+  return response.json();
+};

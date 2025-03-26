@@ -4,12 +4,12 @@ import {
   updateOrderStatus,
   deleteOrder,
   getOrderById,
+  deleteEmployeeInOrderId,
 } from "../../entities/order/order";
 
 export const useOrders = () => {
   const [data, setData] = useState([]);
   const [dataEmployees, setDataEmployees] = useState([]);
-
 
   useEffect(() => {
     const loadData = async () => {
@@ -42,11 +42,20 @@ export const useOrders = () => {
     }
   };
 
+  const handleDeleteEmployeeInOrder = async (orderId, employeeId) => {
+    const deleteEmployee = await deleteEmployeeInOrderId(orderId, employeeId);
+
+    setDataEmployees((prevDataEmployees) =>
+      prevDataEmployees.filter((employee) => employee.id !== employeeId)
+    );
+  };
+
   return {
     data,
     dataEmployees,
     handleStatusChange,
     handleDeleteOrder,
     handleLoadEmployeesById,
+    handleDeleteEmployeeInOrder,
   };
 };
