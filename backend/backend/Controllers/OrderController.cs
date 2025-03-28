@@ -131,7 +131,7 @@ namespace backend.Controllers
 
             order.Status = status;
             
-            if(order.Status == OrderStatus.Новая)
+            if(status == OrderStatus.Выполнена)
             {
                 order.CompletedAt = DateTimeOffset.Now;
             }
