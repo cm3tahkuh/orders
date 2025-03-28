@@ -11,6 +11,36 @@ export const getOrders = async () => {
   return responseData;
 };
 
+export const getOrdersByUserId = async (userId) => {
+  const response = await fetch(
+    `http://localhost:5295/api/Order/getOrdersByUserId/${userId}`
+  );
+  const responseData = await response.json();
+  return responseData;
+};
+
+export const setEmployeeToOrder = async (orderId, employeeId) => {
+  const response = await fetch(
+    `http://localhost:5295/api/Order/${orderId}/assign`,
+    {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: `["${employeeId}"]`,
+    }
+  );
+
+  const responseData = await response.json();
+  return responseData;
+};
+
+export const getEmployeesForAddToOrderId = async (orderId) => {
+  const response = await fetch(
+    `http://localhost:5295/api/Order/getEmployeesForAddToOrder/${orderId}`
+  );
+  const responseData = await response.json();
+  return responseData;
+};
+
 export const getOrderById = async (orderId) => {
   const response = await fetch(
     `http://localhost:5295/api/Order/getOneOrder/${orderId}`

@@ -19,11 +19,15 @@ import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import BadgeIcon from "@mui/icons-material/Badge";
 import RotateRightIcon from "@mui/icons-material/RotateRight";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import { orderStatusMap } from "../../entities/order/order"; 
-import { useAuth } from "../../features/auth/context/useAuth"; 
+import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
+import { orderStatusMap } from "../../entities/order/order";
+import { useAuth } from "../../features/auth/context/useAuth";
+import { useOrders } from "../../features/orders/useOrder";
 
 export const OrderTable = ({ data, onStatusChange, onDelete }) => {
   const { user } = useAuth();
+
+
 
   if (!user) {
     return <Typography variant="h6">Вы не авторизованы.</Typography>;
@@ -66,8 +70,14 @@ export const OrderTable = ({ data, onStatusChange, onDelete }) => {
             </TableCell>
             <TableCell>
               <Box display={"flex"} gap={1} alignContent={"center"}>
+                <AccessTimeFilledIcon />
+                Выполнена
+              </Box>
+            </TableCell>
+            <TableCell>
+              <Box display={"flex"} gap={1} alignContent={"center"}>
                 <BadgeIcon />
-                Выполнитель
+                Сотрудники
               </Box>
             </TableCell>
             <TableCell>
@@ -116,8 +126,26 @@ export const OrderTable = ({ data, onStatusChange, onDelete }) => {
                 <TableCell>
                   <Box display={"flex"} gap={1} alignContent={"center"}>
                     {order.completedAt === null
-                      ? "Не назначен"
+                      ? "-"
                       : new Date(order.completedAt).toLocaleString()}
+                  </Box>
+                </TableCell>
+                <TableCell>
+                  <Box
+                    display={"flex"}
+                    flexDirection={"column"}
+                    gap={1}
+                    alignContent={"center"}
+                  >
+                    {order.employees.length > 0 ? (
+                      order.employees.map((employee) => (
+                        <Typography key={employee.id}>
+                          {employee.firstName} {employee.lastName}
+                        </Typography>
+                      ))
+                    ) : (
+                      <Typography>Не назначены</Typography>
+                    )}
                   </Box>
                 </TableCell>
                 <TableCell>

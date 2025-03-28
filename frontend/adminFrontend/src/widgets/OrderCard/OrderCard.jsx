@@ -12,16 +12,24 @@ import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { orderStatusMap } from "../../entities/order/order";
 import { useState } from "react";
+import OrderEmployeeModal from "../OrderEmployeeModal/OrderEmployeeModal";
 
 const OrderCard = ({
   data,
   dataEmployees,
+  dataAvailableEmployees,
+  addEmployeeToOrder,
   getEmployeesByOrderId,
+  getEmployeesForAddToOrder,
   DeleteEmployeeInOrder,
 }) => {
   const [orderId, setOrderId] = useState(null);
-  console.log(orderId);
-  console.log(dataEmployees);
+  const [openModal, setOpenModal] = useState(false);
+
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
 
   return (
     <Grid2 container spacing={2}>
@@ -43,6 +51,18 @@ const OrderCard = ({
                 setOrderId(order.id);
               }}
               key={order.id}
+              sx={{
+                transition: "all 0.2s ease",
+                margin: "5px",
+                padding: "5px 10px",
+                borderRadius: "15px",
+                backgroundColor:
+                  orderId === order.id ? "#efefef" : "transparent",
+                cursor: "pointer",
+                ":hover": {
+                  backgroundColor: orderId === order.id ? "#efefef" : "#f5f5f5",
+                },
+              }}
             >
               <Box marginTop={1} marginBottom={1}>
                 <Box display={"flex"} justifyContent={"space-between"}>
@@ -123,17 +143,30 @@ const OrderCard = ({
                 Нет назначенных сотрудников или заявка не выбрана
               </Typography>
             )}
-            <Box gap={1} display={"flex"} flexDirection={"column"}>
-              <Button color="success" variant="outlined">
-                Добавить
-              </Button>
-              <Button color="secondary" variant="outlined">
-                Сохранить
-              </Button>
-            </Box>
+            {orderId && (
+              <Box gap={1} display={"flex"} flexDirection={"column"}>
+                <Button
+                  onClick={() => {
+                    setOpenModal(true);
+                    getEmployeesForAddToOrder(orderId);
+                  }}
+                  color="success"
+                  variant="outlined"
+                >
+                  Добавить
+                </Button>
+              </Box>
+            )}
           </Box>
         </Paper>
       </Grid2>
+      <OrderEmployeeModal
+        dataAvailableEmployees={dataAvailableEmployees}
+        open={openModal}
+        onClose={handleCloseModal}
+        orderId={orderId}
+        addEmployeeToOrder={addEmployeeToOrder}
+      />
     </Grid2>
   );
 };

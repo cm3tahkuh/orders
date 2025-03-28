@@ -11,9 +11,12 @@ import {
 import { useState } from "react";
 import ListIcon from "@mui/icons-material/List";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../features/auth/context/useAuth";
 
 const SideBar = () => {
   const [open, toggleDrawer] = useState(false);
+
+  const { user } = useAuth();
 
   return (
     <Box>
@@ -56,25 +59,34 @@ const SideBar = () => {
               <Typography variant="h2">Таблица заявок</Typography>
             </ListItemButton>
           </Link>
+
           <Divider />
-          <Link
-            to="/registeremployee"
-            style={{ color: "black", textDecoration: "none" }}
-          >
-            <ListItemButton>
-              <Typography variant="h2">Регистрация пользователей</Typography>
-            </ListItemButton>
-          </Link>
-          <Divider />
-          <ListItemButton>
-            <Link
-              to="/managementorders"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              <Typography variant="h2">Система управления заказами</Typography>
-            </Link>
-          </ListItemButton>
-          <Divider />
+          { user && user.role !== 2 && (
+            <>
+              <Link
+                to="/registeremployee"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <ListItemButton>
+                  <Typography variant="h2">
+                    Регистрация пользователей
+                  </Typography>
+                </ListItemButton>
+              </Link>
+              <Divider />
+              <Link
+                to="/managementorders"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <ListItemButton>
+                  <Typography variant="h2">
+                    Система управления заявками
+                  </Typography>
+                </ListItemButton>
+              </Link>
+              <Divider />
+            </>
+          )}
         </List>
       </Drawer>
     </Box>

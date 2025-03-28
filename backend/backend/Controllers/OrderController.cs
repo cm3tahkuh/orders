@@ -48,18 +48,20 @@ namespace backend.Controllers
         }
 
 
-        [HttpGet("getOrdersByEmployeeId/{employeeId}")]
-        public async Task<IActionResult> GetOrdersByEmployee(Guid employeeId)
+        [HttpGet("getOrdersByUserId/{userId}")]
+        public async Task<IActionResult> GetOrdersByEmployee(Guid userId)
         {
 
+            
+
             var orders = await _context.Orders
-                .Where(order => order.Employees.Any(e => e.Id == employeeId))
+                .Where(order => order.Employees.Any(employee => employee.User.Id == userId))
                 .ToListAsync();
 
 
             if (orders == null || orders.Count == 0)
             {
-                return NotFound("No orders found for the specified employee.");
+                return NotFound("No orders found for the specified userId.");
             }
 
             return Ok(orders);
@@ -128,6 +130,11 @@ namespace backend.Controllers
             }
 
             order.Status = status;
+            
+            if(order.Status == OrderStatus.Новая)
+            {
+                order.CompletedAt = DateTimeOffset.Now;
+            }
 
             await _context.SaveChangesAsync();
 
@@ -150,12 +157,23 @@ namespace backend.Controllers
 
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(new { message = result.Message });
             }
             else
             {
                 return NotFound(result.Message); // Или BadRequest, в зависимости от типа ошибки
             }
+        }
+
+        [HttpGet("getEmployeesForAddToOrder/{orderId}")]
+
+        public async Task<IActionResult> GetEmployeesForAddToOrderAsync(Guid orderId)
+        {
+            var result = await _context.Employees
+         .Where(employee => !employee.Orders.Any(order => order.Id == orderId))
+         .ToListAsync();
+
+            return Ok(result);
         }
 
         [HttpGet("{orderId}/employees")]

@@ -28,11 +28,11 @@ export const AuthProvider = ({ children }) => {
 
       const username = userData.username;
 
-      if (username) {
+     
         const data = await logoutUser(username);
         localStorage.removeItem("userData");
         setUser(null);
-      }
+      
     } catch (error) {
       console.error("Ошибка при выходе:", error);
     }
