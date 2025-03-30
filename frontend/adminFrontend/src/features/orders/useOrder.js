@@ -18,32 +18,23 @@ export const useOrders = () => {
   const { user } = useAuth();
 
   console.log(data);
-  // const loadOrdersByUserId = async (userId) => {
-  //   const employeeOrders = await getOrdersByUserId(userId);
-  //   setData(employeeOrders);
-  // };
+
   useEffect(() => {
     const loadData = async () => {
-      const orders = await getOrders();
-      setData(orders);
+      if (user && user.role === 2) {
+        const userId = JSON.parse(localStorage.getItem("userData")).id;
+        const employeeOrders = await getOrdersByUserId(userId);
+        setData(employeeOrders);
+      } else {
+        const orders = await getOrders();
+        setData(orders);
+      }
     };
 
-    // const loadOrdersByUserId = async () => {
-    //   const generalUserId = localStorage.getItem("userData");
-
-    //   const userId = JSON.parse(generalUserId);
-
-    //   console.log(userId.id)
-    //   const employeeOrders = await getOrdersByUserId(userId.id);
-    //   setData(employeeOrders);
-    // };
-
-    // loadOrdersByUserId();
-
-  
+    if (user) {
       loadData();
-
-  }, []);
+    }
+  }, [user]);
 
   const handleLoadEmployeesById = async (orderId) => {
     const order = await getOrderById(orderId);

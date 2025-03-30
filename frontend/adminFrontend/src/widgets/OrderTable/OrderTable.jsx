@@ -27,8 +27,6 @@ import { useOrders } from "../../features/orders/useOrder";
 export const OrderTable = ({ data, onStatusChange, onDelete }) => {
   const { user } = useAuth();
 
-
-
   if (!user) {
     return <Typography variant="h6">Вы не авторизованы.</Typography>;
   }
@@ -87,6 +85,7 @@ export const OrderTable = ({ data, onStatusChange, onDelete }) => {
         </TableHead>
         <TableBody>
           {data &&
+            data.length > 0 ?
             data.map((order) => (
               <TableRow key={order.id} display={"flex"}>
                 <TableCell>
@@ -149,17 +148,21 @@ export const OrderTable = ({ data, onStatusChange, onDelete }) => {
                   </Box>
                 </TableCell>
                 <TableCell>
-                  <Button
-                    onClick={() => onDelete(order.id)}
-                    variant="outlined"
-                    color="error"
-                    startIcon={<HighlightOffIcon />}
-                  >
-                    Удалить
-                  </Button>
+                  {user && user.role !== 2 ? (
+                    <Button
+                      onClick={() => onDelete(order.id)}
+                      variant="outlined"
+                      color="error"
+                      startIcon={<HighlightOffIcon />}
+                    >
+                      Удалить
+                    </Button>
+                  ) : (
+                    <></>
+                  )}
                 </TableCell>
               </TableRow>
-            ))}
+            )): <Typography>Заявки отсутствуют.</Typography>}
         </TableBody>
       </Table>
     </TableContainer>

@@ -6,7 +6,7 @@ export const userRoleMap = {
 
 export const loginUser = async (username, password) => {
   try {
-    const response = await fetch("http://localhost:5295/api/Auth/login", {
+    const response = await fetch("http://localhost:5000/api/Auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -31,7 +31,7 @@ export const loginUser = async (username, password) => {
 export const logoutUser = async (username) => {
   try {
     const response = await fetch(
-      `http://localhost:5295/api/Auth/logout?name=${username}`,
+      `http://localhost:5000/api/Auth/logout?name=${username}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -58,7 +58,7 @@ export const registerUser = async (user) => {
   } = user;
 
   try {
-    const response = await fetch(`http://localhost:5295/api/Employee`, {
+    const response = await fetch(`http://localhost:5000/api/Employee`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -83,7 +83,7 @@ export const registerUser = async (user) => {
 
 export const getAllUsers = async () => {
   try {
-    const response = await fetch("http://localhost:5295/api/Employee");
+    const response = await fetch("http://localhost:5000/api/Employee");
 
     const responseData = await response.json();
 
@@ -95,7 +95,7 @@ export const getAllUsers = async () => {
 
 export const deleteUserById = async (id) => {
   try {
-    const response = await fetch("http://localhost:5295/api/Employee", {
+    const response = await fetch("http://localhost:5000/api/Employee", {
       method: "DELETE",
       headers: { "Content-type": "application/json" },
       body: `"${id}"`,
@@ -115,7 +115,7 @@ export const updateUserById = async (user) => {
   } = user;
 
   try {
-    const response = await fetch(`http://localhost:5295/api/Employee/${id}`, {
+    const response = await fetch(`http://localhost:5000/api/Employee/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

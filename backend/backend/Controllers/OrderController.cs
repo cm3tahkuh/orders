@@ -55,7 +55,7 @@ namespace backend.Controllers
             
 
             var orders = await _context.Orders
-                .Where(order => order.Employees.Any(employee => employee.User.Id == userId))
+                .Where(order => order.Employees.Any(employee => employee.User.Id == userId)).Include(order => order.Employees )
                 .ToListAsync();
 
 
@@ -226,10 +226,10 @@ namespace backend.Controllers
             // Добавляем каждого сотрудника в коллекцию сотрудников этой заявки
             foreach (var employee in employees)
             {
-                if (!order.Employees.Any(e => e.Id == employee.Id))  // Проверяем, чтобы сотрудник не был уже назначен
+                if (!order.Employees.Any(e => e.Id == employee.Id))  
                 {
-                    order.Employees.Add(employee);  // Назначаем сотрудника на заявку
-                    //employee.Orders.Add(order);  // НЕ НАДО, если вы используете соединительную таблицу
+                    order.Employees.Add(employee);  
+                  
                 }
             }
 

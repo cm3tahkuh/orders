@@ -6,14 +6,14 @@ export const orderStatusMap = {
 };
 
 export const getOrders = async () => {
-  const response = await fetch("http://localhost:5295/api/Order");
+  const response = await fetch("http://localhost:5000/api/Order");
   const responseData = await response.json();
   return responseData;
 };
 
 export const getOrdersByUserId = async (userId) => {
   const response = await fetch(
-    `http://localhost:5295/api/Order/getOrdersByUserId/${userId}`
+    `http://localhost:5000/api/Order/getOrdersByUserId/${userId}`
   );
   const responseData = await response.json();
   return responseData;
@@ -21,7 +21,7 @@ export const getOrdersByUserId = async (userId) => {
 
 export const setEmployeeToOrder = async (orderId, employeeId) => {
   const response = await fetch(
-    `http://localhost:5295/api/Order/${orderId}/assign`,
+    `http://localhost:5000/api/Order/${orderId}/assign`,
     {
       method: "POST",
       headers: { "Content-type": "application/json" },
@@ -35,7 +35,7 @@ export const setEmployeeToOrder = async (orderId, employeeId) => {
 
 export const getEmployeesForAddToOrderId = async (orderId) => {
   const response = await fetch(
-    `http://localhost:5295/api/Order/getEmployeesForAddToOrder/${orderId}`
+    `http://localhost:5000/api/Order/getEmployeesForAddToOrder/${orderId}`
   );
   const responseData = await response.json();
   return responseData;
@@ -43,7 +43,7 @@ export const getEmployeesForAddToOrderId = async (orderId) => {
 
 export const getOrderById = async (orderId) => {
   const response = await fetch(
-    `http://localhost:5295/api/Order/getOneOrder/${orderId}`
+    `http://localhost:5000/api/Order/getOneOrder/${orderId}`
   );
   const responseData = await response.json();
   return responseData;
@@ -51,7 +51,7 @@ export const getOrderById = async (orderId) => {
 
 export const updateOrderStatus = async (orderId, newStatus) => {
   const response = await fetch(
-    `http://localhost:5295/api/Order/${orderId}?status=${newStatus}`,
+    `http://localhost:5000/api/Order/${orderId}?status=${newStatus}`,
     { method: "PUT", headers: { "Content-type": "application/json" } }
   );
   const result = await response.json();
@@ -59,7 +59,7 @@ export const updateOrderStatus = async (orderId, newStatus) => {
 };
 
 export const deleteOrder = async (deleteId) => {
-  const response = await fetch(`http://localhost:5295/api/Order/${deleteId}`, {
+  const response = await fetch(`http://localhost:5000/api/Order/${deleteId}`, {
     method: "DELETE",
     headers: { "Content-type": "application/json" },
   });
@@ -68,7 +68,7 @@ export const deleteOrder = async (deleteId) => {
 
 export const deleteEmployeeInOrderId = async (orderId, employeeId) => {
   const response = await fetch(
-    `http://localhost:5295/deleteEmployeeInOrderId?orderId=${orderId}&employeeId=${employeeId}`,
+    `http://localhost:5000/deleteEmployeeInOrderId?orderId=${orderId}&employeeId=${employeeId}`,
     {
       method: "DELETE",
       headers: { "Content-type": "application/json" },
